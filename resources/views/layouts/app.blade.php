@@ -17,12 +17,26 @@
             </div>
 
             <ul class="w-1/2 px-12 mr-auto flex justify-end pt-1">
+
+            @if(auth()->check())
+
+                <li class="mx-8">
+                    <p class="text-xl">Welcome <b>{{ auth()->user()->name }}</b></p>
+                </li>
+                <li>
+                    <a href="{{route('login.destroy')}}" class="font-bold py-3 px-4 rounded-md bg-red-500 hover:bg-red-600">LogOut</a>
+                </li>
+
+            @else
+
                 <li>
                     <a href="{{route('login.index')}}" class="hover:bg-gray-900 py-3 px-4 rounded-md">Login </a>
                 </li>
                 <li>
                     <a href="{{route('register.index')}}" class=" border-2 border-white hover:bg-gray-900 py-2 px-3 rounded-md">Register</a>
                 </li>
+
+            @endif
             </ul>
 
         </nav>
